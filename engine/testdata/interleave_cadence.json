@@ -1,0 +1,59 @@
+{
+  "description": "Interleaving cadence: every 4th item comes from the review queue when non-empty (items_since_review >= 3). Review items do not count toward items_since_review. Review items appear at positions 4, 8, 12 (1-indexed) — not 4, 7, 10.",
+  "spec_reference": "docs/04-learning-engine-spec.md §6 step 1, §12",
+  "sequence_length": 12,
+  "expected_review_positions_1_indexed": [
+    4,
+    8,
+    12
+  ],
+  "node": {
+    "learner_id": "550e8400-e29b-41d4-a716-446655440000",
+    "node_id": "MATH.NUM.DECIMALS",
+    "status": "in_progress",
+    "ability_elo": 1200,
+    "attempts_total": 4,
+    "recent_window": [],
+    "distinct_days": [],
+    "max_tier_correct": 2,
+    "mastered_at": null,
+    "stability": 0,
+    "difficulty_fsrs": 5,
+    "due_at": null,
+    "lapses": 0
+  },
+  "items": [
+    {
+      "item_id": "acq-01",
+      "node_id": "MATH.NUM.DECIMALS",
+      "difficulty_tier": 2,
+      "difficulty_elo": 1000
+    },
+    {
+      "item_id": "acq-02",
+      "node_id": "MATH.NUM.DECIMALS",
+      "difficulty_tier": 2,
+      "difficulty_elo": 1000
+    },
+    {
+      "item_id": "acq-03",
+      "node_id": "MATH.NUM.DECIMALS",
+      "difficulty_tier": 2,
+      "difficulty_elo": 1000
+    },
+    {
+      "item_id": "acq-04",
+      "node_id": "MATH.NUM.DECIMALS",
+      "difficulty_tier": 2,
+      "difficulty_elo": 1000
+    }
+  ],
+  "review_queue_item": {
+    "node_id": "MATH.NUM.ADD_SINGLE",
+    "item_id": "rev-item-01"
+  },
+  "proposed_gate": {
+    "description": "Spec v2 §6 step 1 (proposed) adds gate: items_since_review >= 3 AND correct_total >= 2. NOT IMPLEMENTED pending DR-003. Current vector tests only items_since_review >= 3 cadence.",
+    "skip": "pending DR-003 for correct_total >= 2 interleave gate"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "description": "Score forecast should return a band (confidence interval), not a point estimate. NOT IMPLEMENTED — pending forecasting DR.",
+  "spec_reference": "docs/04-learning-engine-spec.md §12 (decisions needed: forecasting), §15",
+  "skip": "pending forecasting DR (forecast feature not yet in scope)",
+  "expected_band": {
+    "min": 1150,
+    "max": 1320,
+    "confidence": 0.95
+  }
+}

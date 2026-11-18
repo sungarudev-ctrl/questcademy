@@ -1,0 +1,45 @@
+{
+  "fixture_id": "item_mcq_misconception_distractor",
+  "kind": "item",
+  "item": {
+    "item_id": "ITEM-MCQ-02",
+    "node_id": "MATH.FRAC.ADD",
+    "type": "mcq_single",
+    "difficulty_tier": 2,
+    "difficulty_elo": 1220,
+    "stem": "Calculate 1/3 + 1/4 in lowest terms.",
+    "hints": [
+      {
+        "level": 1,
+        "tier": 1,
+        "content": "Find the lowest common denominator."
+      },
+      {
+        "level": 2,
+        "tier": 2,
+        "content": "LCM of 3 and 4 is 12."
+      }
+    ],
+    "payload": {
+      "options": [
+        {
+          "id": "A",
+          "option_id": "A",
+          "content": "7/12",
+          "correct": true,
+          "is_correct": true
+        },
+        {
+          "id": "B",
+          "option_id": "B",
+          "content": "2/7",
+          "correct": false,
+          "is_correct": false,
+          "misconception_id": "MISC.FRAC.ADD_DENOM",
+          "learner_facing_name": "Adding denominators directly",
+          "explanation": "Adding denominators directly ignores partition sizes."
+        }
+      ]
+    }
+  }
+}

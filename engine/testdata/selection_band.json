@@ -1,0 +1,43 @@
+{
+  "description": "Selection band verification: 1000 selections with target_elo = ability_elo - 200 (easier than ability by 200 Elo) and Gaussian weighting (sigma=150) yields mean expected success probability in the desirable-difficulty band [0.75, 0.85].",
+  "spec_reference": "docs/04-learning-engine-spec.md §6, §6.1, §12",
+  "num_selections": 1000,
+  "prng_seed": 12345,
+  "expected_band": {
+    "min": 0.75,
+    "max": 0.85
+  },
+  "learner": {
+    "learner_id": "550e8400-e29b-41d4-a716-446655440000",
+    "items_since_review": 0
+  },
+  "node": {
+    "learner_id": "550e8400-e29b-41d4-a716-446655440000",
+    "node_id": "MATH.ALG.LINEAR",
+    "status": "in_progress",
+    "ability_elo": 1400.0,
+    "attempts_total": 10,
+    "recent_window": [],
+    "distinct_days": [],
+    "max_tier_correct": 2,
+    "mastered_at": null,
+    "stability": 0,
+    "difficulty_fsrs": 5.0,
+    "due_at": null,
+    "lapses": 0
+  },
+  "items": [
+    { "item_id": "item-01", "node_id": "MATH.ALG.LINEAR", "difficulty_tier": 2, "difficulty_elo": 1100 },
+    { "item_id": "item-02", "node_id": "MATH.ALG.LINEAR", "difficulty_tier": 2, "difficulty_elo": 1120 },
+    { "item_id": "item-03", "node_id": "MATH.ALG.LINEAR", "difficulty_tier": 2, "difficulty_elo": 1140 },
+    { "item_id": "item-04", "node_id": "MATH.ALG.LINEAR", "difficulty_tier": 2, "difficulty_elo": 1160 },
+    { "item_id": "item-05", "node_id": "MATH.ALG.LINEAR", "difficulty_tier": 2, "difficulty_elo": 1180 },
+    { "item_id": "item-06", "node_id": "MATH.ALG.LINEAR", "difficulty_tier": 2, "difficulty_elo": 1200 },
+    { "item_id": "item-07", "node_id": "MATH.ALG.LINEAR", "difficulty_tier": 2, "difficulty_elo": 1200 },
+    { "item_id": "item-08", "node_id": "MATH.ALG.LINEAR", "difficulty_tier": 2, "difficulty_elo": 1220 },
+    { "item_id": "item-09", "node_id": "MATH.ALG.LINEAR", "difficulty_tier": 2, "difficulty_elo": 1220 },
+    { "item_id": "item-10", "node_id": "MATH.ALG.LINEAR", "difficulty_tier": 2, "difficulty_elo": 1240 },
+    { "item_id": "item-11", "node_id": "MATH.ALG.LINEAR", "difficulty_tier": 2, "difficulty_elo": 1240 },
+    { "item_id": "item-12", "node_id": "MATH.ALG.LINEAR", "difficulty_tier": 2, "difficulty_elo": 1260 }
+  ]
+}

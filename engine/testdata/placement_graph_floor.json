@@ -1,0 +1,10 @@
+{
+  "description": "When placement converges at or below graph_min_depth, PlacementResult.at_graph_floor must be true (spec v2 §7.1).",
+  "spec_reference": "docs/04-learning-engine-spec.md §7.1, §12",
+  "learner_id": "550e8400-e29b-41d4-a716-446655440000",
+  "subject": "mathematics",
+  "entry_grade_hint": "P1",
+  "graph_min_depth": 0,
+  "frontier_depth": 0,
+  "expected_at_graph_floor": true
+}

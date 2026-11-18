@@ -1,0 +1,39 @@
+{
+  "description": "FSRS exam-aware interval compression: intervals compress as the exam approaches so no mastered node goes unreviewed inside the exam window. Tests compression factors across all threshold brackets and scheduled interval multiplication.",
+  "spec_reference": "docs/04-learning-engine-spec.md §8.1, §8.3, §12",
+  "compression_cases": [
+    {
+      "name": "no_exam_scheduled",
+      "days_until_exam": null,
+      "expected_compression": 1.0
+    },
+    {
+      "name": "far_exam_over_90_days",
+      "days_until_exam": 100,
+      "expected_compression": 1.0
+    },
+    {
+      "name": "medium_exam_between_30_and_90_days",
+      "days_until_exam": 45,
+      "expected_compression": 0.75
+    },
+    {
+      "name": "approaching_exam_between_14_and_30_days",
+      "days_until_exam": 20,
+      "expected_compression": 0.5
+    },
+    {
+      "name": "critical_exam_under_14_days",
+      "days_until_exam": 10,
+      "expected_compression": 0.35
+    }
+  ],
+  "scheduling_case": {
+    "now": "2026-06-01T08:00:00.000Z",
+    "days_until_exam": 10,
+    "base_stability": 10.0,
+    "expected_compression": 0.35,
+    "expected_effective_interval_days": 3.5,
+    "expected_due_at": "2026-06-04T20:00:00.000Z"
+  }
+}

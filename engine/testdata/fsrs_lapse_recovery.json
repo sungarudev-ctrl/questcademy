@@ -1,0 +1,60 @@
+{
+  "description": "FSRS lapse and recovery sequence: incorrect review triggers stability drop (x 0.3, min 1.0), difficulty increase (+0.6), lapses increment, and transition to relearning. Two consecutive unhinted corrects recover the node to mastered while preserving mastered_at (I-2).",
+  "spec_reference": "docs/04-learning-engine-spec.md §3, §8.1, §11 (I-2), §12",
+  "initial_node": {
+    "learner_id": "learner-fsrs-01",
+    "node_id": "MATH.FRAC.ADD",
+    "status": "mastered",
+    "ability_elo": 1400,
+    "attempts_total": 5,
+    "recent_window": [],
+    "distinct_days": ["2026-06-01"],
+    "max_tier_correct": 3,
+    "mastered_at": "2026-06-01T08:00:00.000Z",
+    "stability": 10.0,
+    "difficulty_fsrs": 4.5,
+    "due_at": "2026-06-11T08:00:00.000Z",
+    "lapses": 0
+  },
+  "steps": [
+    {
+      "step": 1,
+      "description": "Review attempt 1 incorrect -> triggers lapse",
+      "now": "2026-06-11T08:00:00.000Z",
+      "correct": false,
+      "hints_used": 0,
+      "expected_state": {
+        "status": "relearning",
+        "lapses": 1,
+        "stability": 3.0,
+        "difficulty_fsrs": 5.1,
+        "due_at": "2026-06-14T08:00:00.000Z",
+        "mastered_at": "2026-06-01T08:00:00.000Z"
+      }
+    },
+    {
+      "step": 2,
+      "description": "Review attempt 2 correct -> 1st consecutive correct in relearning",
+      "now": "2026-06-14T08:00:00.000Z",
+      "correct": true,
+      "hints_used": 0,
+      "expected_state": {
+        "status": "relearning",
+        "lapses": 1,
+        "mastered_at": "2026-06-01T08:00:00.000Z"
+      }
+    },
+    {
+      "step": 3,
+      "description": "Review attempt 3 correct -> 2nd consecutive correct in relearning, recovers to mastered",
+      "now": "2026-06-15T08:00:00.000Z",
+      "correct": true,
+      "hints_used": 0,
+      "expected_state": {
+        "status": "mastered",
+        "lapses": 1,
+        "mastered_at": "2026-06-01T08:00:00.000Z"
+      }
+    }
+  ]
+}

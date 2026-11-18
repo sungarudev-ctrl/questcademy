@@ -1,0 +1,45 @@
+{
+  "description": "Review attempts MUST NOT update ability_elo (spec v2 §5.4). The learner's ability is frozen at first mastery; only item difficulty_elo is updated on review.",
+  "spec_reference": "docs/04-learning-engine-spec.md §5.1, §5.4, §12",
+  "skip": "pending DR-002 (confirm review attempts freeze ability_elo per v2 §5.4)",
+  "node": {
+    "learner_id": "550e8400-e29b-41d4-a716-446655440000",
+    "node_id": "MATH.ALG.LINEAR",
+    "status": "needs_review",
+    "ability_elo": 1400,
+    "difficulty_elo": 1350,
+    "attempts_total": 15,
+    "recent_window": [],
+    "distinct_days": [
+      "2026-08-01",
+      "2026-08-05",
+      "2026-08-10"
+    ],
+    "max_tier_correct": 3,
+    "mastered_at": "2026-08-10T12:00:00Z",
+    "stability": 14,
+    "difficulty_fsrs": 4.5,
+    "due_at": "2026-09-15T00:00:00Z",
+    "lapses": 0
+  },
+  "attempt": {
+    "attempt_id": "att-review-001",
+    "learner_id": "550e8400-e29b-41d4-a716-446655440000",
+    "node_id": "MATH.ALG.LINEAR",
+    "item_id": "item-rev-001",
+    "difficulty_tier": 2,
+    "correct": true,
+    "partial_credit": 1,
+    "selected_option": null,
+    "misconception_id": null,
+    "latency_ms": 5000,
+    "hints_used": 0,
+    "session_id": "sess-rev-001",
+    "occurred_at": "2026-09-15T10:00:00Z",
+    "is_review": true,
+    "is_placement": false,
+    "is_exam": false
+  },
+  "item_response_count": 80,
+  "expected_ability_elo": 1400
+}

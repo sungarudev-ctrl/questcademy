@@ -1,0 +1,84 @@
+{
+  "description": "Ability seed secured by I-1 (2026-08-14 correction): the mean ability of prerequisites includes ALL states in I-1's secured set (mastered, needs_review, relearning), NOT just the literal string 'mastered'. Unsecured states (locked, available, in_progress, or unattempted) are excluded. A prerequisite in 'relearning' contributes its evidenced ability_elo.",
+  "spec_reference": "docs/04-learning-engine-spec.md §5.1, §11 (I-1), §12",
+  "graph": {
+    "MATH.ALG.LINEAR": {
+      "node_id": "MATH.ALG.LINEAR",
+      "prerequisites": [
+        { "node_id": "MATH.NUM.INTEGERS", "type": "hard" },
+        { "node_id": "MATH.NUM.FRACTIONS", "type": "hard" },
+        { "node_id": "MATH.NUM.DECIMALS", "type": "hard" }
+      ]
+    },
+    "MATH.GEO.TRIANGLE": {
+      "node_id": "MATH.GEO.TRIANGLE",
+      "prerequisites": [
+        { "node_id": "MATH.GEO.LINES", "type": "hard" }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "description": "Hard prerequisites in mixed states: relearning (1500), needs_review (1400), in_progress (1100)",
+      "learner_id": "550e8400-e29b-41d4-a716-446655440000",
+      "node_id": "MATH.ALG.LINEAR",
+      "prerequisite_states": {
+        "MATH.NUM.INTEGERS": {
+          "node_id": "MATH.NUM.INTEGERS",
+          "status": "relearning",
+          "ability_elo": 1500
+        },
+        "MATH.NUM.FRACTIONS": {
+          "node_id": "MATH.NUM.FRACTIONS",
+          "status": "needs_review",
+          "ability_elo": 1400
+        },
+        "MATH.NUM.DECIMALS": {
+          "node_id": "MATH.NUM.DECIMALS",
+          "status": "in_progress",
+          "ability_elo": 1100
+        }
+      },
+      "expected_ability_seed": 1450.0,
+      "notes": "Secured statuses under I-1 are {mastered, needs_review, relearning}. Both INTEGERS (relearning) and FRACTIONS (needs_review) count: (1500 + 1400) / 2 = 1450. DECIMALS is in_progress (unsecured) and is excluded."
+    },
+    {
+      "description": "Single hard prerequisite in 'relearning' status",
+      "learner_id": "550e8400-e29b-41d4-a716-446655440000",
+      "node_id": "MATH.GEO.TRIANGLE",
+      "prerequisite_states": {
+        "MATH.GEO.LINES": {
+          "node_id": "MATH.GEO.LINES",
+          "status": "relearning",
+          "ability_elo": 1380
+        }
+      },
+      "expected_ability_seed": 1380.0,
+      "notes": "A prerequisite in relearning carries genuine historical evidence and seeds the next node at 1380 rather than falling back to 1200."
+    },
+    {
+      "description": "Hard prerequisites only in unsecured states (available, in_progress, locked)",
+      "learner_id": "550e8400-e29b-41d4-a716-446655440000",
+      "node_id": "MATH.ALG.LINEAR",
+      "prerequisite_states": {
+        "MATH.NUM.INTEGERS": {
+          "node_id": "MATH.NUM.INTEGERS",
+          "status": "available",
+          "ability_elo": 1200
+        },
+        "MATH.NUM.FRACTIONS": {
+          "node_id": "MATH.NUM.FRACTIONS",
+          "status": "in_progress",
+          "ability_elo": 1250
+        },
+        "MATH.NUM.DECIMALS": {
+          "node_id": "MATH.NUM.DECIMALS",
+          "status": "locked",
+          "ability_elo": 1200
+        }
+      },
+      "expected_ability_seed": 1200.0,
+      "notes": "No hard prerequisites are secured under I-1, so fallback is 1200."
+    }
+  ]
+}

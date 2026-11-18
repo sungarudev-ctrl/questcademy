@@ -1,0 +1,103 @@
+name: Content & Framework CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/**"
+      - "scripts/ci/**"
+      - ".github/workflows/content-ci.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "backend/**"
+      - "scripts/ci/**"
+      - ".github/workflows/content-ci.yml"
+
+jobs:
+  framework-and-content-gates:
+    name: Framework Layer, Country Isolation & Math Invariance Gates
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: "pip"
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install fastapi pydantic sqlalchemy alembic pytest sympy httpx
+
+      - name: Gate 1: Country-Isolation Lint Rule
+        run: |
+          echo "Verifying country_code isolation..."
+          python scripts/ci/check_country_isolation.py
+
+      - name: Gate 2: Localization Math-Invariance Gate (SymPy)
+        run: |
+          echo "Verifying math invariance on localized overrides..."
+          python scripts/ci/check_math_invariance.py
+
+      - name: Gate 3: Run Framework & Content Resolver Unit Tests
+        run: |
+          echo "Running pytest on backend unit tests..."
+          pytest backend/tests/unit -v
+
+      - name: Gate 4: Verify Alembic Migrations (Upgrade & Downgrade)
+        run: |
+          echo "Verifying Alembic upgrade and downgrade cleanly..."
+          alembic -c backend/alembic.ini -x sqlalchemy.url=sqlite:///test_ci.db upgrade head
+          alembic -c backend/alembic.ini -x sqlalchemy.url=sqlite:///test_ci.db downgrade base
+          rm -f test_ci.db
+
+      - name: Gate 5: Check Generation Jobs Recorded
+        run: |
+          echo "Verifying all pipeline tasks record generation jobs..."
+          python scripts/ci/check_generation_jobs_recorded.py
+
+      - name: Gate 6: Check Gemini Costs Recorded
+        run: |
+          echo "Verifying all AI calls are cost-tracked..."
+          python scripts/ci/check_gemini_cost_recorded.py
+
+      - name: Gate 7: Check Prompt Locations
+        run: |
+          echo "Verifying all prompts loaded from shared/prompts/v1/..."
+          python scripts/ci/check_prompt_locations.py
+
+      - name: Gate 8: Check Localization Review Status
+        run: |
+          echo "Verifying review_status on all localizations..."
+          python scripts/ci/check_localization_review_status.py
+
+      - name: Gate 9: Check No Direct ObjectiveNodeMap Write
+        run: |
+          echo "Verifying zero direct writes to objective_node_map in pipelines..."
+          python scripts/ci/check_no_direct_objective_node_map_write.py
+
+      - name: Gate 10: Run Full Backend Unit & Integration Tests
+        run: |
+          echo "Running full test suite..."
+          pytest backend/tests/ -v
+
+      - name: Gate 11: Check No Bulk Endpoints
+        run: |
+          echo "Verifying prohibition of bulk approval endpoints..."
+          python scripts/ci/check_no_bulk_endpoints.py
+
+      - name: Gate 12: Check Admin UI Never Imports Engine
+        run: |
+          echo "Verifying admin UI never imports engine code directly..."
+          python scripts/ci/check_admin_no_engine_import.py
+
+      - name: Gate 13: Check Canonical Single-Source Renderers
+        run: |
+          echo "Verifying exactly one BlockRenderer and ItemRenderer exist..."
+          python scripts/ci/check_canonical_renderers.py
+

@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ContentLocalizedResponse",
+  "type": "object",
+  "required": ["section_overrides", "rationale"],
+  "properties": {
+    "section_overrides": {
+      "type": "object",
+      "description": "Sparse map of section_index (as string key) to overridden section object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["section_index", "title", "blocks"],
+        "properties": {
+          "section_index": { "type": "integer" },
+          "title": { "type": "string" },
+          "blocks": {
+            "type": "array",
+            "items": { "type": "object" }
+          }
+        }
+      }
+    },
+    "rationale": { "type": "string" }
+  }
+}

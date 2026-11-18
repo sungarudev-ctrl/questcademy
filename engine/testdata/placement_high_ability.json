@@ -1,0 +1,63 @@
+{
+  "description": "Above-grade learner with P5 entry hint placed at frontier above entry hint (JSS2, depth 24). Exercises initial bracket seeding around P5, monotonic lo advancement on passes, 2/3 boundary condition, and convergence at hi - lo <= 1.",
+  "spec_reference": "docs/04-learning-engine-spec.md §7, §7.1, §12",
+  "learner_id": "learner-high-ability",
+  "subject": "mathematics",
+  "entry_grade_hint": "P5",
+  "hint_depth": 15,
+  "graph_min_depth": 0,
+  "graph_max_depth": 30,
+  "expected_initial_bracket": {
+    "lo": 5,
+    "hi": 25
+  },
+  "graph": {
+    "MATH.P1.COUNT": { "node_id": "MATH.P1.COUNT", "depth": 0, "prerequisites": [] },
+    "MATH.P2.ADD": { "node_id": "MATH.P2.ADD", "depth": 5, "prerequisites": [{ "node_id": "MATH.P1.COUNT", "type": "hard" }] },
+    "MATH.P5.DEC_A": { "node_id": "MATH.P5.DEC_A", "depth": 15, "prerequisites": [{ "node_id": "MATH.P2.ADD", "type": "hard" }] },
+    "MATH.P5.DEC_B": { "node_id": "MATH.P5.DEC_B", "depth": 15, "prerequisites": [{ "node_id": "MATH.P2.ADD", "type": "hard" }] },
+    "MATH.P5.DEC_C": { "node_id": "MATH.P5.DEC_C", "depth": 15, "prerequisites": [{ "node_id": "MATH.P2.ADD", "type": "hard" }] },
+    "MATH.JSS1.ALG_A": { "node_id": "MATH.JSS1.ALG_A", "depth": 20, "prerequisites": [{ "node_id": "MATH.P5.DEC_A", "type": "hard" }] },
+    "MATH.JSS1.ALG_B": { "node_id": "MATH.JSS1.ALG_B", "depth": 20, "prerequisites": [{ "node_id": "MATH.P5.DEC_B", "type": "hard" }] },
+    "MATH.JSS1.ALG_C": { "node_id": "MATH.JSS1.ALG_C", "depth": 20, "prerequisites": [{ "node_id": "MATH.P5.DEC_C", "type": "hard" }] },
+    "MATH.JSS2.EQ_A": { "node_id": "MATH.JSS2.EQ_A", "depth": 22, "prerequisites": [{ "node_id": "MATH.JSS1.ALG_A", "type": "hard" }] },
+    "MATH.JSS2.EQ_B": { "node_id": "MATH.JSS2.EQ_B", "depth": 22, "prerequisites": [{ "node_id": "MATH.JSS1.ALG_B", "type": "hard" }] },
+    "MATH.JSS2.EQ_C": { "node_id": "MATH.JSS2.EQ_C", "depth": 22, "prerequisites": [{ "node_id": "MATH.JSS1.ALG_C", "type": "hard" }] },
+    "MATH.JSS2.ADV_A": { "node_id": "MATH.JSS2.ADV_A", "depth": 23, "prerequisites": [{ "node_id": "MATH.JSS2.EQ_A", "type": "hard" }] },
+    "MATH.JSS2.ADV_B": { "node_id": "MATH.JSS2.ADV_B", "depth": 23, "prerequisites": [{ "node_id": "MATH.JSS2.EQ_B", "type": "hard" }] },
+    "MATH.JSS2.ADV_C": { "node_id": "MATH.JSS2.ADV_C", "depth": 23, "prerequisites": [{ "node_id": "MATH.JSS2.EQ_C", "type": "hard" }] },
+    "MATH.JSS2.MAIN_A": { "node_id": "MATH.JSS2.MAIN_A", "depth": 24, "prerequisites": [{ "node_id": "MATH.JSS2.ADV_A", "type": "hard" }] },
+    "MATH.JSS2.MAIN_B": { "node_id": "MATH.JSS2.MAIN_B", "depth": 24, "prerequisites": [{ "node_id": "MATH.JSS2.ADV_B", "type": "hard" }] },
+    "MATH.JSS2.MAIN_C": { "node_id": "MATH.JSS2.MAIN_C", "depth": 24, "prerequisites": [{ "node_id": "MATH.JSS2.ADV_C", "type": "hard" }] },
+    "MATH.SSS1.ADV": { "node_id": "MATH.SSS1.ADV", "depth": 30, "prerequisites": [{ "node_id": "MATH.JSS2.MAIN_A", "type": "hard" }] }
+  },
+  "probes": [
+    { "node_id": "MATH.P5.DEC_A", "depth": 15, "correct": true },
+    { "node_id": "MATH.P5.DEC_B", "depth": 15, "correct": true },
+    { "node_id": "MATH.P5.DEC_C", "depth": 15, "correct": true },
+    { "node_id": "MATH.JSS1.ALG_A", "depth": 20, "correct": true },
+    { "node_id": "MATH.JSS1.ALG_B", "depth": 20, "correct": true },
+    { "node_id": "MATH.JSS1.ALG_C", "depth": 20, "correct": true },
+    { "node_id": "MATH.JSS2.EQ_A", "depth": 22, "correct": true },
+    { "node_id": "MATH.JSS2.EQ_B", "depth": 22, "correct": true },
+    { "node_id": "MATH.JSS2.EQ_C", "depth": 22, "correct": true },
+    { "node_id": "MATH.JSS2.ADV_A", "depth": 23, "correct": true },
+    { "node_id": "MATH.JSS2.ADV_B", "depth": 23, "correct": true },
+    { "node_id": "MATH.JSS2.ADV_C", "depth": 23, "correct": true },
+    { "node_id": "MATH.JSS2.MAIN_A", "depth": 24, "correct": true },
+    { "node_id": "MATH.JSS2.MAIN_B", "depth": 24, "correct": true },
+    { "node_id": "MATH.JSS2.MAIN_C", "depth": 24, "correct": false }
+  ],
+  "expected_final_state": {
+    "items_used": 15,
+    "converged": true,
+    "widened": false,
+    "frontier_depth": 24,
+    "lo": 24,
+    "hi": 25
+  },
+  "expected_frontier": {
+    "depth": 24,
+    "nodes": ["MATH.JSS2.MAIN_A", "MATH.JSS2.MAIN_B", "MATH.JSS2.MAIN_C"]
+  }
+}

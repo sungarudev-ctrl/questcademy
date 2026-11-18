@@ -1,0 +1,94 @@
+name: Engine CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "engine/**"
+      - "simulation/**"
+      - ".github/workflows/engine-ci.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "engine/**"
+      - "simulation/**"
+      - ".github/workflows/engine-ci.yml"
+
+jobs:
+  engine-verification:
+    name: Learning Engine Verification & Simulation Gate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: "engine/package-lock.json"
+
+      - name: Install Dependencies
+        working-directory: engine
+        run: npm ci
+
+      - name: Typecheck Engine
+        working-directory: engine
+        run: npm run typecheck
+
+      - name: Lint Boundary Gate (/engine imports nothing outside /engine)
+        working-directory: engine
+        run: |
+          echo "Verifying /engine does not import outside /engine..."
+          if grep -rn "from \"\.\./\.\./" src/; then
+            echo "ERROR: Forbidden relative import outside /engine found!"
+            exit 1
+          fi
+          echo "Boundary check passed."
+
+      - name: Grep Gate: Forbidden Non-Deterministic / Network Calls (E-1)
+        working-directory: engine
+        run: |
+          echo "Verifying no forbidden clock, random, or network calls in /engine/src..."
+          FORBIDDEN_FOUND=0
+          
+          if grep -rn "Math\.random" src/; then
+            echo "ERROR: Forbidden Math.random call found in engine/src!"
+            FORBIDDEN_FOUND=1
+          fi
+
+          if grep -rn "Date\.now" src/; then
+            echo "ERROR: Forbidden Date.now call found in engine/src!"
+            FORBIDDEN_FOUND=1
+          fi
+
+          if grep -rn "new Date()" src/; then
+            echo "ERROR: Forbidden new Date() call found in engine/src!"
+            FORBIDDEN_FOUND=1
+          fi
+
+          if grep -rn "fetch(" src/; then
+            echo "ERROR: Forbidden fetch() call found in engine/src!"
+            FORBIDDEN_FOUND=1
+          fi
+
+          if [ $FORBIDDEN_FOUND -ne 0 ]; then
+            exit 1
+          fi
+          echo "Grep gate passed."
+
+      - name: Run Engine Tests & 100% Branch Coverage Gate
+        working-directory: engine
+        run: npm run test:coverage
+
+      - name: Build Engine & Simulation
+        working-directory: engine
+        run: |
+          npm run build
+          npx tsc -p ../simulation/tsconfig.json
+
+      - name: Run Simulation Diff Gate
+        working-directory: engine
+        run: npm run simulation:diff

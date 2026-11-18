@@ -1,0 +1,37 @@
+{
+  "description": "Overdue backlog decay: nodes overdue by >60 days are admitted at a maximum of 3/day so that overdue backlog does not crowd out today's normal reviews.",
+  "spec_reference": "docs/04-learning-engine-spec.md §8.2, §12",
+  "learner_id": "learner-decay-01",
+  "now": "2026-09-01T08:00:00.000Z",
+  "max_overdue_backlog": 3,
+  "nodes": [
+    { "node_id": "OVERDUE_01", "status": "needs_review", "due_at": "2026-06-01T08:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-05-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "OVERDUE_02", "status": "needs_review", "due_at": "2026-06-02T08:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-05-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "OVERDUE_03", "status": "needs_review", "due_at": "2026-06-03T08:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-05-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "OVERDUE_04", "status": "needs_review", "due_at": "2026-06-04T08:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-05-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "OVERDUE_05", "status": "needs_review", "due_at": "2026-06-05T08:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-05-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "OVERDUE_06", "status": "needs_review", "due_at": "2026-06-06T08:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-05-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "OVERDUE_07", "status": "needs_review", "due_at": "2026-06-07T08:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-05-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "OVERDUE_08", "status": "needs_review", "due_at": "2026-06-08T08:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-05-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "OVERDUE_09", "status": "needs_review", "due_at": "2026-06-09T08:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-05-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "OVERDUE_10", "status": "needs_review", "due_at": "2026-06-10T08:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-05-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "TODAY_01", "status": "needs_review", "due_at": "2026-09-01T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-08-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "TODAY_02", "status": "needs_review", "due_at": "2026-09-01T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-08-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "TODAY_03", "status": "needs_review", "due_at": "2026-09-01T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-08-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "TODAY_04", "status": "needs_review", "due_at": "2026-09-01T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-08-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "TODAY_05", "status": "needs_review", "due_at": "2026-09-01T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-08-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 }
+  ],
+  "expected_queue_count": 8,
+  "expected_overdue_backlog_admitted": 3,
+  "expected_today_reviews_admitted": 5,
+  "expected_queue_node_ids": [
+    "OVERDUE_01",
+    "OVERDUE_02",
+    "OVERDUE_03",
+    "TODAY_01",
+    "TODAY_02",
+    "TODAY_03",
+    "TODAY_04",
+    "TODAY_05"
+  ]
+}

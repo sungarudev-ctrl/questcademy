@@ -1,0 +1,17 @@
+{
+  "mean_30_day_retention": 0.785,
+  "mean_selection_success_band": 0.7508,
+  "escalation_rate": 0,
+  "days_to_mastery_distribution": {
+    "mean": 5.49,
+    "median": 5,
+    "p25": 4,
+    "p75": 7,
+    "p90": 9
+  },
+  "content_gap_count": 1,
+  "invariant_violations_count": 0,
+  "total_learners": 10000,
+  "total_attempts": 282481,
+  "total_escalations": 0
+}

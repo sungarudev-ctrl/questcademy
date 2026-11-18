@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ItemGenerationResponse",
+  "type": "object",
+  "required": ["items"],
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "difficulty_tier",
+          "stem",
+          "payload",
+          "scoring",
+          "hints",
+          "worked_solution",
+          "offline_capable",
+          "a11y"
+        ],
+        "properties": {
+          "type": { "type": "string" },
+          "difficulty_tier": { "type": "integer", "enum": [1, 2, 3] },
+          "stem": { "type": "string" },
+          "payload": { "type": "object" },
+          "scoring": {
+            "type": "object",
+            "required": ["mode", "max_marks"],
+            "properties": {
+              "mode": { "type": "string" },
+              "max_marks": { "type": "integer" }
+            }
+          },
+          "hints": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "object",
+              "required": ["level", "content"],
+              "properties": {
+                "level": { "type": "integer", "enum": [1, 2, 3] },
+                "content": { "type": "string" },
+                "misconception_id": { "type": ["string", "null"] }
+              }
+            }
+          },
+          "worked_solution": { "type": "string" },
+          "offline_capable": { "type": "boolean" },
+          "media_bytes": { "type": "integer" },
+          "a11y": {
+            "type": "object",
+            "properties": {
+              "alt_text": { "type": "string" },
+              "speech_text": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

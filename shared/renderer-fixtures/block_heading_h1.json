@@ -1,0 +1,14 @@
+{
+  "fixture_id": "block_heading_h1",
+  "kind": "block",
+  "blocks": [
+    {
+      "block_id": "b-h1",
+      "type": "heading",
+      "payload": {
+        "level": 1,
+        "text": "Linear Equations and Inequalities"
+      }
+    }
+  ]
+}

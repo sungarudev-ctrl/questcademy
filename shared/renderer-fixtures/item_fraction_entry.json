@@ -1,0 +1,16 @@
+{
+  "fixture_id": "item_fraction_entry",
+  "kind": "item",
+  "item": {
+    "item_id": "ITEM-FRAC-01",
+    "node_id": "MATH.FRAC.SIMPLIFY",
+    "type": "fraction_input",
+    "difficulty_tier": 1,
+    "difficulty_elo": 1120,
+    "stem": "Simplify the fraction 6/8 to simplest terms.",
+    "payload": {
+      "correct_numerator": 3,
+      "correct_denominator": 4
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "fixture_id": "block_paragraph_basic",
+  "kind": "block",
+  "blocks": [
+    {
+      "block_id": "b-p1",
+      "type": "text",
+      "payload": {
+        "text": "A linear equation represents a straight line on the Cartesian coordinate plane."
+      }
+    }
+  ]
+}

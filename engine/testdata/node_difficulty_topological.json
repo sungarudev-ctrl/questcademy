@@ -1,0 +1,105 @@
+{
+  "description": "Topological difficulty derivation: node.difficulty_elo = 1200 + 25 * topologicalLevel(nodeId). Topological level is the longest chain from a root; soft prerequisites count. Base is 1200 (equal to cold-start ability fallback). A cycle throws an error.",
+  "spec_reference": "docs/04-learning-engine-spec.md §5.1, §12",
+  "graph": {
+    "MATH.NUM.COUNT": {
+      "node_id": "MATH.NUM.COUNT",
+      "prerequisites": []
+    },
+    "MATH.NUM.ADD_SINGLE": {
+      "node_id": "MATH.NUM.ADD_SINGLE",
+      "prerequisites": [
+        { "node_id": "MATH.NUM.COUNT", "type": "hard" }
+      ]
+    },
+    "MATH.NUM.ADD_DOUBLE": {
+      "node_id": "MATH.NUM.ADD_DOUBLE",
+      "prerequisites": [
+        { "node_id": "MATH.NUM.ADD_SINGLE", "type": "hard" }
+      ]
+    },
+    "MATH.FRAC.INTRO": {
+      "node_id": "MATH.FRAC.INTRO",
+      "prerequisites": [
+        { "node_id": "MATH.NUM.COUNT", "type": "soft" }
+      ]
+    },
+    "MATH.NUM.LCD": {
+      "node_id": "MATH.NUM.LCD",
+      "prerequisites": [
+        { "node_id": "MATH.NUM.ADD_DOUBLE", "type": "hard" }
+      ]
+    },
+    "MATH.FRAC.ADD_LIKE": {
+      "node_id": "MATH.FRAC.ADD_LIKE",
+      "prerequisites": [
+        { "node_id": "MATH.NUM.ADD_DOUBLE", "type": "hard" },
+        { "node_id": "MATH.FRAC.INTRO", "type": "soft" }
+      ]
+    },
+    "MATH.FRAC.ADD_UNLIKE": {
+      "node_id": "MATH.FRAC.ADD_UNLIKE",
+      "prerequisites": [
+        { "node_id": "MATH.FRAC.ADD_LIKE", "type": "hard" },
+        { "node_id": "MATH.NUM.LCD", "type": "hard" }
+      ]
+    },
+    "CYCLE_A": {
+      "node_id": "CYCLE_A",
+      "prerequisites": [
+        { "node_id": "CYCLE_B", "type": "hard" }
+      ]
+    },
+    "CYCLE_B": {
+      "node_id": "CYCLE_B",
+      "prerequisites": [
+        { "node_id": "CYCLE_A", "type": "hard" }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "node_id": "MATH.NUM.COUNT",
+      "expected_level": 0,
+      "expected_difficulty_elo": 1200,
+      "notes": "Root node with no prerequisites sits at base anchor 1200."
+    },
+    {
+      "node_id": "MATH.NUM.ADD_SINGLE",
+      "expected_level": 1,
+      "expected_difficulty_elo": 1225,
+      "notes": "Direct child of root has level 1 (1200 + 25*1 = 1225)."
+    },
+    {
+      "node_id": "MATH.FRAC.INTRO",
+      "expected_level": 1,
+      "expected_difficulty_elo": 1225,
+      "notes": "Soft prerequisite counts for topological depth."
+    },
+    {
+      "node_id": "MATH.NUM.ADD_DOUBLE",
+      "expected_level": 2,
+      "expected_difficulty_elo": 1250,
+      "notes": "Chain length 2 (COUNT -> ADD_SINGLE -> ADD_DOUBLE)."
+    },
+    {
+      "node_id": "MATH.FRAC.ADD_LIKE",
+      "expected_level": 3,
+      "expected_difficulty_elo": 1275,
+      "notes": "Longest chain is max(level(ADD_DOUBLE)=2, level(INTRO)=1) + 1 = 3."
+    },
+    {
+      "node_id": "MATH.FRAC.ADD_UNLIKE",
+      "expected_level": 4,
+      "expected_difficulty_elo": 1300,
+      "notes": "Deep node with multiple depth-3 prerequisites has level 4."
+    }
+  ],
+  "cycle_cases": [
+    {
+      "node_id": "CYCLE_A",
+      "expected_error": true,
+      "notes": "A prerequisite cycle is a content error, not a case to level around."
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "description": "Provisional mastery from placement (mastered_at = null) unlocks downstream dependants under I-1. When a provisional node drops to 'available' (e.g. fails review per §7.1), downstream dependants are re-locked under I-1 on the next read.",
+  "spec_reference": "docs/04-learning-engine-spec.md §3, §7.1, §11 (I-1, I-2), §12",
+  "graph": {
+    "NODE_A": {
+      "node_id": "NODE_A",
+      "depth": 0,
+      "prerequisites": []
+    },
+    "NODE_B": {
+      "node_id": "NODE_B",
+      "depth": 1,
+      "prerequisites": [
+        { "node_id": "NODE_A", "type": "hard" }
+      ]
+    },
+    "NODE_C": {
+      "node_id": "NODE_C",
+      "depth": 2,
+      "prerequisites": [
+        { "node_id": "NODE_B", "type": "hard" }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "name": "provisional_mastery_unlocks_dependant",
+      "node_a": {
+        "node_id": "NODE_A",
+        "status": "mastered",
+        "mastered_at": null,
+        "ability_elo": 1250,
+        "attempts_total": 3,
+        "recent_window": [],
+        "distinct_days": [],
+        "max_tier_correct": 2,
+        "stability": 3.0,
+        "difficulty_fsrs": 5.0,
+        "due_at": null,
+        "lapses": 0
+      },
+      "node_b": {
+        "node_id": "NODE_B",
+        "status": "available",
+        "mastered_at": null,
+        "ability_elo": 1200,
+        "attempts_total": 0,
+        "recent_window": [],
+        "distinct_days": [],
+        "max_tier_correct": 0,
+        "stability": 3.0,
+        "difficulty_fsrs": 5.0,
+        "due_at": null,
+        "lapses": 0
+      },
+      "expected_i2_violation_node_a": null,
+      "expected_i1_violation_node_b": null,
+      "expected_node_b_unlocked": true
+    },
+    {
+      "name": "demotion_to_available_relocks_dependant",
+      "node_a": {
+        "node_id": "NODE_A",
+        "status": "available",
+        "mastered_at": null,
+        "ability_elo": 1200,
+        "attempts_total": 4,
+        "recent_window": [],
+        "distinct_days": [],
+        "max_tier_correct": 2,
+        "stability": 1.0,
+        "difficulty_fsrs": 5.6,
+        "due_at": null,
+        "lapses": 0
+      },
+      "node_b": {
+        "node_id": "NODE_B",
+        "status": "available",
+        "mastered_at": null,
+        "ability_elo": 1200,
+        "attempts_total": 0,
+        "recent_window": [],
+        "distinct_days": [],
+        "max_tier_correct": 0,
+        "stability": 3.0,
+        "difficulty_fsrs": 5.0,
+        "due_at": null,
+        "lapses": 0
+      },
+      "expected_i1_violation_node_b": {
+        "id": "I-1",
+        "expected_substring": "must be mastered/needs_review/relearning"
+      },
+      "expected_node_b_unlocked": false
+    }
+  ],
+  "seeding_case": {
+    "frontier": ["NODE_C"],
+    "evidence": {
+      "NODE_C": { "correct": 3, "total": 3, "rate": 1.0 }
+    },
+    "expected_provisionally_mastered_nodes": ["NODE_A", "NODE_B", "NODE_C"],
+    "expected_mastered_at": null
+  }
+}

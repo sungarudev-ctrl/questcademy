@@ -1,0 +1,7 @@
+{
+  "description": "When days_until_exam is null/undefined/None, examCompression MUST return 1.0 with no error (spec v2 §8.3).",
+  "spec_reference": "docs/04-learning-engine-spec.md §8.3, §2.4, §12",
+  "now": "2026-09-15T00:00:00Z",
+  "exam_window": null,
+  "expected_compression": 1
+}

@@ -1,0 +1,13 @@
+{
+  "description": "mastery_blockers feature: reports each unmet clause; spacing-only => blockers = {spacing}. NOT IMPLEMENTED — pending DR-003.",
+  "spec_reference": "docs/04-learning-engine-spec.md §4 (v2, proposed), §12",
+  "skip": "pending DR-003 (mastery_blockers proposed feature, not yet decided)",
+  "state": {
+    "learner_id": "550e8400-e29b-41d4-a716-446655440000",
+    "node_id": "MATH.NUM.WHOLE",
+    "status": "in_progress"
+  },
+  "expected_blockers": [
+    "spacing"
+  ]
+}

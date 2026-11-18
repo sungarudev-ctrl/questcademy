@@ -1,0 +1,214 @@
+{
+  "description": "Mastering one node in a 4-chain makes exactly one more available at each stage, and the doc 01 §3.2 frontier is the available set minus the secured ones.",
+  "spec_reference": "docs/04-learning-engine-spec.md §3, §11 (I-1), §12; docs/01-platform-vision-and-architecture.md §3.2",
+  "graph": {
+    "NODE_1": {
+      "node_id": "NODE_1",
+      "prerequisites": []
+    },
+    "NODE_2": {
+      "node_id": "NODE_2",
+      "prerequisites": [
+        { "node_id": "NODE_1", "type": "hard" }
+      ]
+    },
+    "NODE_3": {
+      "node_id": "NODE_3",
+      "prerequisites": [
+        { "node_id": "NODE_2", "type": "hard" }
+      ]
+    },
+    "NODE_4": {
+      "node_id": "NODE_4",
+      "prerequisites": [
+        { "node_id": "NODE_3", "type": "hard" }
+      ]
+    }
+  },
+  "stages": [
+    {
+      "stage": 0,
+      "description": "Initial state: no nodes secured",
+      "states": {},
+      "expected_available": ["NODE_1"],
+      "expected_secured": [],
+      "expected_frontier": ["NODE_1"]
+    },
+    {
+      "stage": 1,
+      "description": "NODE_1 mastered",
+      "states": {
+        "NODE_1": {
+          "node_id": "NODE_1",
+          "status": "mastered",
+          "ability_elo": 1250,
+          "attempts_total": 5,
+          "recent_window": [],
+          "distinct_days": ["2026-09-01", "2026-09-03"],
+          "max_tier_correct": 3,
+          "mastered_at": "2026-09-03T10:00:00Z",
+          "stability": 3.0,
+          "difficulty_fsrs": 4.8,
+          "due_at": "2026-09-06T10:00:00Z",
+          "lapses": 0
+        }
+      },
+      "expected_available": ["NODE_1", "NODE_2"],
+      "expected_secured": ["NODE_1"],
+      "expected_frontier": ["NODE_2"]
+    },
+    {
+      "stage": 2,
+      "description": "NODE_1 and NODE_2 mastered",
+      "states": {
+        "NODE_1": {
+          "node_id": "NODE_1",
+          "status": "mastered",
+          "ability_elo": 1250,
+          "attempts_total": 5,
+          "recent_window": [],
+          "distinct_days": ["2026-09-01", "2026-09-03"],
+          "max_tier_correct": 3,
+          "mastered_at": "2026-09-03T10:00:00Z",
+          "stability": 3.0,
+          "difficulty_fsrs": 4.8,
+          "due_at": "2026-09-06T10:00:00Z",
+          "lapses": 0
+        },
+        "NODE_2": {
+          "node_id": "NODE_2",
+          "status": "mastered",
+          "ability_elo": 1280,
+          "attempts_total": 5,
+          "recent_window": [],
+          "distinct_days": ["2026-09-04", "2026-09-06"],
+          "max_tier_correct": 3,
+          "mastered_at": "2026-09-06T10:00:00Z",
+          "stability": 3.0,
+          "difficulty_fsrs": 4.7,
+          "due_at": "2026-09-09T10:00:00Z",
+          "lapses": 0
+        }
+      },
+      "expected_available": ["NODE_1", "NODE_2", "NODE_3"],
+      "expected_secured": ["NODE_1", "NODE_2"],
+      "expected_frontier": ["NODE_3"]
+    },
+    {
+      "stage": 3,
+      "description": "NODE_1, NODE_2, NODE_3 mastered",
+      "states": {
+        "NODE_1": {
+          "node_id": "NODE_1",
+          "status": "mastered",
+          "ability_elo": 1250,
+          "attempts_total": 5,
+          "recent_window": [],
+          "distinct_days": ["2026-09-01", "2026-09-03"],
+          "max_tier_correct": 3,
+          "mastered_at": "2026-09-03T10:00:00Z",
+          "stability": 3.0,
+          "difficulty_fsrs": 4.8,
+          "due_at": "2026-09-06T10:00:00Z",
+          "lapses": 0
+        },
+        "NODE_2": {
+          "node_id": "NODE_2",
+          "status": "mastered",
+          "ability_elo": 1280,
+          "attempts_total": 5,
+          "recent_window": [],
+          "distinct_days": ["2026-09-04", "2026-09-06"],
+          "max_tier_correct": 3,
+          "mastered_at": "2026-09-06T10:00:00Z",
+          "stability": 3.0,
+          "difficulty_fsrs": 4.7,
+          "due_at": "2026-09-09T10:00:00Z",
+          "lapses": 0
+        },
+        "NODE_3": {
+          "node_id": "NODE_3",
+          "status": "mastered",
+          "ability_elo": 1300,
+          "attempts_total": 5,
+          "recent_window": [],
+          "distinct_days": ["2026-09-07", "2026-09-09"],
+          "max_tier_correct": 3,
+          "mastered_at": "2026-09-09T10:00:00Z",
+          "stability": 3.0,
+          "difficulty_fsrs": 4.6,
+          "due_at": "2026-09-12T10:00:00Z",
+          "lapses": 0
+        }
+      },
+      "expected_available": ["NODE_1", "NODE_2", "NODE_3", "NODE_4"],
+      "expected_secured": ["NODE_1", "NODE_2", "NODE_3"],
+      "expected_frontier": ["NODE_4"]
+    },
+    {
+      "stage": 4,
+      "description": "All four nodes mastered",
+      "states": {
+        "NODE_1": {
+          "node_id": "NODE_1",
+          "status": "mastered",
+          "ability_elo": 1250,
+          "attempts_total": 5,
+          "recent_window": [],
+          "distinct_days": ["2026-09-01", "2026-09-03"],
+          "max_tier_correct": 3,
+          "mastered_at": "2026-09-03T10:00:00Z",
+          "stability": 3.0,
+          "difficulty_fsrs": 4.8,
+          "due_at": "2026-09-06T10:00:00Z",
+          "lapses": 0
+        },
+        "NODE_2": {
+          "node_id": "NODE_2",
+          "status": "mastered",
+          "ability_elo": 1280,
+          "attempts_total": 5,
+          "recent_window": [],
+          "distinct_days": ["2026-09-04", "2026-09-06"],
+          "max_tier_correct": 3,
+          "mastered_at": "2026-09-06T10:00:00Z",
+          "stability": 3.0,
+          "difficulty_fsrs": 4.7,
+          "due_at": "2026-09-09T10:00:00Z",
+          "lapses": 0
+        },
+        "NODE_3": {
+          "node_id": "NODE_3",
+          "status": "mastered",
+          "ability_elo": 1300,
+          "attempts_total": 5,
+          "recent_window": [],
+          "distinct_days": ["2026-09-07", "2026-09-09"],
+          "max_tier_correct": 3,
+          "mastered_at": "2026-09-09T10:00:00Z",
+          "stability": 3.0,
+          "difficulty_fsrs": 4.6,
+          "due_at": "2026-09-12T10:00:00Z",
+          "lapses": 0
+        },
+        "NODE_4": {
+          "node_id": "NODE_4",
+          "status": "mastered",
+          "ability_elo": 1320,
+          "attempts_total": 5,
+          "recent_window": [],
+          "distinct_days": ["2026-09-10", "2026-09-12"],
+          "max_tier_correct": 3,
+          "mastered_at": "2026-09-12T10:00:00Z",
+          "stability": 3.0,
+          "difficulty_fsrs": 4.5,
+          "due_at": "2026-09-15T10:00:00Z",
+          "lapses": 0
+        }
+      },
+      "expected_available": ["NODE_1", "NODE_2", "NODE_3", "NODE_4"],
+      "expected_secured": ["NODE_1", "NODE_2", "NODE_3", "NODE_4"],
+      "expected_frontier": []
+    }
+  ]
+}

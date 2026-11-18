@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "NodeAuthoringResponse",
+  "type": "object",
+  "required": ["nodes"],
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "node_id",
+          "subject",
+          "topic",
+          "subtopic",
+          "title",
+          "learner_title",
+          "description",
+          "grade_band_hint",
+          "est_minutes",
+          "representations",
+          "misconceptions",
+          "candidate_item_capacity"
+        ],
+        "properties": {
+          "node_id": { "type": "string" },
+          "subject": { "type": "string" },
+          "topic": { "type": "string" },
+          "subtopic": { "type": "string" },
+          "title": { "type": "string" },
+          "learner_title": { "type": "string" },
+          "description": { "type": "string" },
+          "grade_band_hint": { "type": "string" },
+          "est_minutes": { "type": "integer" },
+          "representations": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "misconceptions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "description", "learner_facing_name"],
+              "properties": {
+                "id": { "type": "string" },
+                "description": { "type": "string" },
+                "learner_facing_name": { "type": "string" }
+              }
+            }
+          },
+          "candidate_item_capacity": { "type": "integer" }
+        }
+      }
+    }
+  }
+}

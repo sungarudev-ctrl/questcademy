@@ -1,0 +1,48 @@
+name: Sync Parity
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "engine/**"
+      - "engine-bridge/**"
+      - "backend/**"
+      - "web/**"
+      - "mobile/**"
+      - "shared/testdata/**"
+      - ".github/workflows/sync-parity.yml"
+  pull_request:
+    branches: [main]
+
+jobs:
+  sync-parity:
+    name: Parity, idempotency, ordering, clock skew (fail hard)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Build engine
+        working-directory: engine
+        run: |
+          npm ci
+          npm run build
+
+      - name: Sidecar parity, idempotency, ordering tests
+        run: node --test engine-bridge/test/replay.test.mjs
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: pip install fastapi pydantic sqlalchemy alembic pytest sympy httpx celery aiolimiter redis
+
+      - name: Server sync tests (parity, idempotency, out-of-order, clock skew, partial failure, retired item, profile switch, pin migration)
+        run: pytest backend/tests/unit -k sync -v
+
+      - name: No engine predicates in clients
+        run: python scripts/ci/check_no_client_engine_predicates.py

@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FrameworkExtractionResponse",
+  "type": "object",
+  "required": ["objectives"],
+  "properties": {
+    "objectives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "text", "grade_band"],
+        "properties": {
+          "code": { "type": "string" },
+          "text": { "type": "string" },
+          "grade_band": { "type": "string" },
+          "term": { "type": ["integer", "null"] },
+          "exam_weight": { "type": ["number", "null"] }
+        }
+      }
+    }
+  }
+}

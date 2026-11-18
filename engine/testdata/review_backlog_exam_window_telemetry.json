@@ -1,0 +1,10 @@
+{
+  "description": "When total_due > 8 (cap) during an exam window, the engine emits review_backlog_in_exam_window metadata (spec v2 §8.2, §4 C4).",
+  "spec_reference": "docs/04-learning-engine-spec.md §8.2, §12",
+  "now": "2026-09-15T00:00:00Z",
+  "exam_window_days": 10,
+  "nodes_due_count": 40,
+  "cap": 8,
+  "expected_queue_length": 8,
+  "expected_telemetry_key": "review_backlog_in_exam_window"
+}

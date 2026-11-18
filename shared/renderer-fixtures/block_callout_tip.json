@@ -1,0 +1,14 @@
+{
+  "fixture_id": "block_callout_tip",
+  "kind": "block",
+  "blocks": [
+    {
+      "block_id": "b-tip",
+      "type": "tip",
+      "payload": {
+        "title": "Exam Tip",
+        "text": "Double check signs when distributing negative factors across parentheses."
+      }
+    }
+  ]
+}

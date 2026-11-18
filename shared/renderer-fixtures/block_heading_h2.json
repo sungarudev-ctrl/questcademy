@@ -1,0 +1,14 @@
+{
+  "fixture_id": "block_heading_h2",
+  "kind": "block",
+  "blocks": [
+    {
+      "block_id": "b-h2",
+      "type": "heading",
+      "payload": {
+        "level": 2,
+        "text": "Solving for Unknown Variables"
+      }
+    }
+  ]
+}

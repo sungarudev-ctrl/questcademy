@@ -1,0 +1,14 @@
+{
+  "fixture_id": "block_callout_warning",
+  "kind": "block",
+  "blocks": [
+    {
+      "block_id": "b-warn",
+      "type": "warning",
+      "payload": {
+        "title": "Common Error",
+        "text": "Do not divide both sides by zero."
+      }
+    }
+  ]
+}

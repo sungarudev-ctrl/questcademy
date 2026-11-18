@@ -1,0 +1,56 @@
+{
+  "description": "Pool exhaustion ladder: on a 6-item node (<8 items), as candidate pool empties, the 4-step ladder relaxes constraints (21d -> 10d -> widen sigma -> least recently seen -> content_gap telemetry). Invariant I-4: selectNextItem MUST always return a Decision, never throw.",
+  "spec_reference": "docs/04-learning-engine-spec.md §6.3, §11 (I-4), §12",
+  "node": {
+    "learner_id": "550e8400-e29b-41d4-a716-446655440000",
+    "node_id": "MATH.NUM.TINY_NODE",
+    "status": "in_progress",
+    "ability_elo": 1200.0,
+    "attempts_total": 6,
+    "recent_window": [],
+    "distinct_days": [],
+    "max_tier_correct": 2,
+    "mastered_at": null,
+    "stability": 0,
+    "difficulty_fsrs": 5.0,
+    "due_at": null,
+    "lapses": 0
+  },
+  "items": [
+    { "item_id": "item-01", "node_id": "MATH.NUM.TINY_NODE", "difficulty_tier": 2, "difficulty_elo": 1000 },
+    { "item_id": "item-02", "node_id": "MATH.NUM.TINY_NODE", "difficulty_tier": 2, "difficulty_elo": 1000 },
+    { "item_id": "item-03", "node_id": "MATH.NUM.TINY_NODE", "difficulty_tier": 2, "difficulty_elo": 1000 },
+    { "item_id": "item-04", "node_id": "MATH.NUM.TINY_NODE", "difficulty_tier": 2, "difficulty_elo": 1000 },
+    { "item_id": "item-05", "node_id": "MATH.NUM.TINY_NODE", "difficulty_tier": 2, "difficulty_elo": 1000 },
+    { "item_id": "item-06", "node_id": "MATH.NUM.TINY_NODE", "difficulty_tier": 2, "difficulty_elo": 1000 }
+  ],
+  "cases": [
+    {
+      "description": "Step 1: All 6 items seen within 21 days, but items 1 and 2 seen 15 days ago (> 10 days)",
+      "seen_history": [
+        { "item_id": "item-01", "days_ago": 15 },
+        { "item_id": "item-02", "days_ago": 15 },
+        { "item_id": "item-03", "days_ago": 5 },
+        { "item_id": "item-04", "days_ago": 4 },
+        { "item_id": "item-05", "days_ago": 3 },
+        { "item_id": "item-06", "days_ago": 2 }
+      ],
+      "expected_reasons": ["pool_exhaustion_relax_window", "content_gap"],
+      "allowed_item_ids": ["item-01", "item-02"]
+    },
+    {
+      "description": "Step 3: All 6 items seen within 10 days; serves least-recently-seen item",
+      "seen_history": [
+        { "item_id": "item-01", "days_ago": 9 },
+        { "item_id": "item-02", "days_ago": 8 },
+        { "item_id": "item-03", "days_ago": 5 },
+        { "item_id": "item-04", "days_ago": 4 },
+        { "item_id": "item-05", "days_ago": 3 },
+        { "item_id": "item-06", "days_ago": 1 }
+      ],
+      "expected_reasons": ["pool_exhaustion_least_recent", "content_gap"],
+      "expected_item_id": "item-01"
+    }
+  ],
+  "content_gap_triggered": true
+}

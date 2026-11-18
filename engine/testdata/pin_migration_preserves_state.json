@@ -1,0 +1,44 @@
+{
+  "description": "Pin migration (schema version bump) MUST leave all NodeState fields byte-identical. I-11 asserts this (spec v2 §11, invariant I-11).",
+  "spec_reference": "docs/04-learning-engine-spec.md §11, §12",
+  "prior_state": {
+    "learner_id": "550e8400-e29b-41d4-a716-446655440000",
+    "node_id": "MATH.NUM.WHOLE",
+    "status": "mastered",
+    "ability_elo": 1350,
+    "difficulty_elo": 1200,
+    "attempts_total": 12,
+    "recent_window": [
+      {
+        "attempt_id": "att-pin-01",
+        "learner_id": "550e8400-e29b-41d4-a716-446655440000",
+        "node_id": "MATH.NUM.WHOLE",
+        "item_id": "item-01",
+        "difficulty_tier": 2,
+        "correct": true,
+        "partial_credit": 1,
+        "selected_option": null,
+        "misconception_id": null,
+        "latency_ms": 4000,
+        "hints_used": 0,
+        "session_id": "sess-01",
+        "occurred_at": "2026-08-01T10:00:00Z",
+        "is_review": false,
+        "is_placement": false,
+        "is_exam": false
+      }
+    ],
+    "distinct_days": [
+      "2026-08-01",
+      "2026-08-02",
+      "2026-08-03"
+    ],
+    "max_tier_correct": 3,
+    "mastered_at": "2026-08-03T10:00:00Z",
+    "stability": 7.5,
+    "difficulty_fsrs": 4.8,
+    "due_at": "2026-08-10T10:00:00Z",
+    "lapses": 0
+  },
+  "expected_i11_violations": 0
+}

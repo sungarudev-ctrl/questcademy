@@ -1,0 +1,45 @@
+{
+  "description": "A hinted Tier-3 correct attempt MUST NOT advance max_tier_correct (spec v2 §2.1). Only qualifying attempts (is_placement=false, is_exam=false) with hints_used === 0 qualify.",
+  "spec_reference": "docs/04-learning-engine-spec.md §2.1, §12",
+  "state": {
+    "learner_id": "550e8400-e29b-41d4-a716-446655440000",
+    "node_id": "MATH.NUM.FRACTIONS",
+    "status": "in_progress",
+    "ability_elo": 1250,
+    "difficulty_elo": 1200,
+    "attempts_total": 5,
+    "recent_window": [],
+    "distinct_days": [
+      "2026-09-01"
+    ],
+    "max_tier_correct": 2,
+    "mastered_at": null,
+    "stability": 0,
+    "difficulty_fsrs": 5,
+    "due_at": null,
+    "lapses": 0
+  },
+  "attempt": {
+    "attempt_id": "att-hinted-t3-001",
+    "learner_id": "550e8400-e29b-41d4-a716-446655440000",
+    "node_id": "MATH.NUM.FRACTIONS",
+    "item_id": "item-tier3-001",
+    "difficulty_tier": 3,
+    "correct": true,
+    "partial_credit": 1,
+    "selected_option": null,
+    "misconception_id": null,
+    "latency_ms": 8000,
+    "hints_used": 1,
+    "session_id": "sess-001",
+    "occurred_at": "2026-09-02T10:00:00Z",
+    "is_review": false,
+    "is_placement": false,
+    "is_exam": false
+  },
+  "expected": {
+    "max_tier_correct": 2,
+    "is_mastered": false
+  },
+  "comment": "Tier-3 correct with hints_used=1 must NOT advance max_tier_correct from 2 to 3"
+}

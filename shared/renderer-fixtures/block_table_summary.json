@@ -1,0 +1,29 @@
+{
+  "fixture_id": "block_table_summary",
+  "kind": "block",
+  "blocks": [
+    {
+      "block_id": "b-t1",
+      "type": "table",
+      "payload": {
+        "headers": [
+          "Term",
+          "Definition",
+          "Example"
+        ],
+        "rows": [
+          [
+            "Coefficient",
+            "Number multiplied by variable",
+            "3 in 3x"
+          ],
+          [
+            "Constant",
+            "Number with fixed value",
+            "7 in x + 7"
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "fixture_id": "item_mcq_single_basic",
+  "kind": "item",
+  "item": {
+    "item_id": "ITEM-MCQ-01",
+    "node_id": "MATH.ALG.LINEAR",
+    "type": "mcq_single",
+    "difficulty_tier": 1,
+    "difficulty_elo": 1100,
+    "stem": "What is the value of x in 2x = 10?",
+    "hints": [
+      {
+        "level": 1,
+        "tier": 1,
+        "content": "Divide both sides by the coefficient of x."
+      },
+      {
+        "level": 2,
+        "tier": 2,
+        "content": "Calculate 10 divided by 2."
+      }
+    ],
+    "payload": {
+      "options": [
+        {
+          "id": "A",
+          "option_id": "A",
+          "content": "5",
+          "correct": true,
+          "is_correct": true
+        },
+        {
+          "id": "B",
+          "option_id": "B",
+          "content": "8",
+          "correct": false,
+          "is_correct": false
+        },
+        {
+          "id": "C",
+          "option_id": "C",
+          "content": "12",
+          "correct": false,
+          "is_correct": false
+        },
+        {
+          "id": "D",
+          "option_id": "D",
+          "content": "20",
+          "correct": false,
+          "is_correct": false
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "description": "offer_tutor action is triggered when escalation conditions met AND DR-003 accepted. NOT IMPLEMENTED — pending DR-003.",
+  "spec_reference": "docs/04-learning-engine-spec.md §9.1 (v2, proposed), §12",
+  "skip": "pending DR-003 (offer_tutor proposed feature, not yet decided)",
+  "expected_action": "offer_tutor"
+}

@@ -1,0 +1,17 @@
+{
+  "fixture_id": "item_numeric_input",
+  "kind": "item",
+  "item": {
+    "item_id": "ITEM-NUM-01",
+    "node_id": "MATH.GEO.PYTH",
+    "type": "numeric_input",
+    "difficulty_tier": 2,
+    "difficulty_elo": 1250,
+    "stem": "Calculate the hypotenuse of a right-angled triangle with sides 3 cm and 4 cm.",
+    "payload": {
+      "correct_value": 5,
+      "tolerance": 0.01,
+      "unit": "cm"
+    }
+  }
+}

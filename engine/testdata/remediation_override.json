@@ -1,0 +1,40 @@
+{
+  "description": "Remediation override rule: scan node.recent_window (last 5) for a misconception appearing >= 2 times. 1 hit in 5 does not trigger; 2 hits triggers serve_remediation; remediation_shown_recently=true suppresses; a 2-vs-2 tie resolves to the more-recently-hit belief.",
+  "spec_reference": "docs/04-learning-engine-spec.md §6 step 2, §2.2 (2026-08-16), §12",
+  "cases": [
+    {
+      "id": "case_1_hit",
+      "description": "1 hit of MISC_DENOM_ADD in 5 attempts -> does NOT trigger remediation",
+      "recent_window_misconceptions": [null, "MISC_DENOM_ADD", null, null, null],
+      "expected_dominant": null,
+      "remediation_shown_recently": false,
+      "expected_action": "serve_item"
+    },
+    {
+      "id": "case_2_hits_trigger",
+      "description": "2 hits of MISC_DENOM_ADD in 5 attempts -> triggers serve_remediation",
+      "recent_window_misconceptions": [null, "MISC_DENOM_ADD", null, "MISC_DENOM_ADD", null],
+      "expected_dominant": "MISC_DENOM_ADD",
+      "remediation_shown_recently": false,
+      "expected_action": "serve_remediation",
+      "expected_reason": "remediation_override"
+    },
+    {
+      "id": "case_shown_recently_suppression",
+      "description": "2 hits of MISC_DENOM_ADD, but remediation shown within 3 days -> suppressed",
+      "recent_window_misconceptions": [null, "MISC_DENOM_ADD", null, "MISC_DENOM_ADD", null],
+      "expected_dominant": "MISC_DENOM_ADD",
+      "remediation_shown_recently": true,
+      "expected_action": "serve_item"
+    },
+    {
+      "id": "case_tie_breaker_recency",
+      "description": "2 hits of MISC_A and 2 hits of MISC_B. Chronological: A, B, A, B -> B is more recent -> resolves to MISC_B",
+      "recent_window_misconceptions": ["MISC_A", "MISC_B", "MISC_A", "MISC_B", null],
+      "expected_dominant": "MISC_B",
+      "remediation_shown_recently": false,
+      "expected_action": "serve_remediation",
+      "expected_reason": "remediation_override"
+    }
+  ]
+}

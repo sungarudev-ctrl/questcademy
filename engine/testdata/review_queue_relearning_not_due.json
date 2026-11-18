@@ -1,0 +1,47 @@
+{
+  "description": "Relearning not-due exclusion: relearning nodes not yet due are excluded from the queue even if there are empty slots. The due relearning node leads the queue, and overdue and due-today tiers are reached up to cap.",
+  "spec_reference": "docs/04-learning-engine-spec.md §8.2, §12",
+  "learner_id": "learner-relearn-not-due-01",
+  "now": "2026-07-01T08:00:00.000Z",
+  "nodes": [
+    { "node_id": "RELEARN_NOT_DUE_01", "status": "relearning", "due_at": "2026-07-02T08:00:00.000Z", "ability_elo": 1200, "lapses": 1, "stability": 1.0, "difficulty_fsrs": 5.6, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "RELEARN_NOT_DUE_02", "status": "relearning", "due_at": "2026-07-02T08:00:00.000Z", "ability_elo": 1200, "lapses": 1, "stability": 1.0, "difficulty_fsrs": 5.6, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "RELEARN_NOT_DUE_03", "status": "relearning", "due_at": "2026-07-02T08:00:00.000Z", "ability_elo": 1200, "lapses": 1, "stability": 1.0, "difficulty_fsrs": 5.6, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "RELEARN_NOT_DUE_04", "status": "relearning", "due_at": "2026-07-02T08:00:00.000Z", "ability_elo": 1200, "lapses": 1, "stability": 1.0, "difficulty_fsrs": 5.6, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "RELEARN_NOT_DUE_05", "status": "relearning", "due_at": "2026-07-02T08:00:00.000Z", "ability_elo": 1200, "lapses": 1, "stability": 1.0, "difficulty_fsrs": 5.6, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "RELEARN_NOT_DUE_06", "status": "relearning", "due_at": "2026-07-02T08:00:00.000Z", "ability_elo": 1200, "lapses": 1, "stability": 1.0, "difficulty_fsrs": 5.6, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "RELEARN_NOT_DUE_07", "status": "relearning", "due_at": "2026-07-02T08:00:00.000Z", "ability_elo": 1200, "lapses": 1, "stability": 1.0, "difficulty_fsrs": 5.6, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "RELEARN_NOT_DUE_08", "status": "relearning", "due_at": "2026-07-02T08:00:00.000Z", "ability_elo": 1200, "lapses": 1, "stability": 1.0, "difficulty_fsrs": 5.6, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "RELEARN_NOT_DUE_09", "status": "relearning", "due_at": "2026-07-02T08:00:00.000Z", "ability_elo": 1200, "lapses": 1, "stability": 1.0, "difficulty_fsrs": 5.6, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "RELEARN_DUE_01", "status": "relearning", "due_at": "2026-07-01T00:00:00.000Z", "ability_elo": 1200, "lapses": 1, "stability": 1.0, "difficulty_fsrs": 5.6, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "OVERDUE_01", "status": "needs_review", "due_at": "2026-06-25T08:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "OVERDUE_02", "status": "needs_review", "due_at": "2026-06-26T08:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "OVERDUE_03", "status": "needs_review", "due_at": "2026-06-27T08:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "OVERDUE_04", "status": "needs_review", "due_at": "2026-06-28T08:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "DUE_TODAY_01", "status": "needs_review", "due_at": "2026-07-01T04:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "DUE_TODAY_02", "status": "needs_review", "due_at": "2026-07-01T05:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "DUE_TODAY_03", "status": "needs_review", "due_at": "2026-07-01T06:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "DUE_TODAY_04", "status": "needs_review", "due_at": "2026-07-01T07:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 }
+  ],
+  "expected_excluded_node_ids": [
+    "RELEARN_NOT_DUE_01",
+    "RELEARN_NOT_DUE_02",
+    "RELEARN_NOT_DUE_03",
+    "RELEARN_NOT_DUE_04",
+    "RELEARN_NOT_DUE_05",
+    "RELEARN_NOT_DUE_06",
+    "RELEARN_NOT_DUE_07",
+    "RELEARN_NOT_DUE_08",
+    "RELEARN_NOT_DUE_09"
+  ],
+  "expected_queue_node_ids": [
+    "RELEARN_DUE_01",
+    "OVERDUE_01",
+    "OVERDUE_02",
+    "OVERDUE_03",
+    "OVERDUE_04",
+    "DUE_TODAY_01",
+    "DUE_TODAY_02",
+    "DUE_TODAY_03"
+  ]
+}

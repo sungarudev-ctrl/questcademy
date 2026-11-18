@@ -1,0 +1,42 @@
+{
+  "description": "Item difficulty initialisation relative to node: itemInitialElo = nodeElo + tierOffset(tier). Offsets are baked constants derived from doc 05 §2 target p-values (-285, -115, +20), NOT authored fixed values (1200/1500/1800) and NOT computed at runtime.",
+  "spec_reference": "docs/04-learning-engine-spec.md §5.1, §12",
+  "tier_offsets": {
+    "1": -285,
+    "2": -115,
+    "3": 20
+  },
+  "comparisons": [
+    {
+      "description": "Shallow node at base level (COUNT, nodeElo=1200)",
+      "node_id": "MATH.NUM.COUNT",
+      "node_elo": 1200,
+      "items": [
+        { "tier": 1, "expected_offset": -285, "expected_item_elo": 915 },
+        { "tier": 2, "expected_offset": -115, "expected_item_elo": 1085 },
+        { "tier": 3, "expected_offset": 20, "expected_item_elo": 1220 }
+      ]
+    },
+    {
+      "description": "Intermediate node (ADD_LIKE, nodeElo=1275)",
+      "node_id": "MATH.FRAC.ADD_LIKE",
+      "node_elo": 1275,
+      "items": [
+        { "tier": 1, "expected_offset": -285, "expected_item_elo": 990 },
+        { "tier": 2, "expected_offset": -115, "expected_item_elo": 1160 },
+        { "tier": 3, "expected_offset": 20, "expected_item_elo": 1295 }
+      ]
+    },
+    {
+      "description": "Deep node (JSS3 Algebra / Quadratic, nodeElo=1600)",
+      "node_id": "MATH.ALG.QUAD",
+      "node_elo": 1600,
+      "items": [
+        { "tier": 1, "expected_offset": -285, "expected_item_elo": 1315 },
+        { "tier": 2, "expected_offset": -115, "expected_item_elo": 1485 },
+        { "tier": 3, "expected_offset": 20, "expected_item_elo": 1620 }
+      ]
+    }
+  ],
+  "assertion": "A Tier 1 item on a deep node (1315) is harder than a Tier 3 item on a shallow node (1220). The item difficulty is relative to the node, eliminating the cold-start distortion from fixed tiers."
+}

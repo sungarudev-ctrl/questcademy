@@ -1,0 +1,52 @@
+{
+  "description": "Ability seed from prerequisites: for a fresh node, ability_elo seeds from the mean ability of the node's secured hard prerequisites under I-1, or 1200 if none are secured. Soft prerequisites do not gate and do not seed ability.",
+  "spec_reference": "docs/04-learning-engine-spec.md §5.1, §12",
+  "graph": {
+    "MATH.FRAC.ADD_UNLIKE": {
+      "node_id": "MATH.FRAC.ADD_UNLIKE",
+      "prerequisites": [
+        { "node_id": "MATH.FRAC.LCD", "type": "hard" },
+        { "node_id": "MATH.FRAC.ADD_LIKE", "type": "hard" },
+        { "node_id": "MATH.FRAC.ESTIMATE", "type": "soft" }
+      ]
+    },
+    "MATH.NUM.COUNT": {
+      "node_id": "MATH.NUM.COUNT",
+      "prerequisites": []
+    }
+  },
+  "cases": [
+    {
+      "description": "Hard prerequisites mastered with abilities 1450 and 1350; soft prerequisite has 1600 (ignored)",
+      "learner_id": "550e8400-e29b-41d4-a716-446655440000",
+      "node_id": "MATH.FRAC.ADD_UNLIKE",
+      "prerequisite_states": {
+        "MATH.FRAC.LCD": {
+          "node_id": "MATH.FRAC.LCD",
+          "status": "mastered",
+          "ability_elo": 1450
+        },
+        "MATH.FRAC.ADD_LIKE": {
+          "node_id": "MATH.FRAC.ADD_LIKE",
+          "status": "mastered",
+          "ability_elo": 1350
+        },
+        "MATH.FRAC.ESTIMATE": {
+          "node_id": "MATH.FRAC.ESTIMATE",
+          "status": "mastered",
+          "ability_elo": 1600
+        }
+      },
+      "expected_ability_seed": 1400.0,
+      "notes": "Mean of hard prerequisites (1450 + 1350) / 2 = 1400. Soft prerequisite 1600 is excluded."
+    },
+    {
+      "description": "Root node with no prerequisites",
+      "learner_id": "550e8400-e29b-41d4-a716-446655440000",
+      "node_id": "MATH.NUM.COUNT",
+      "prerequisite_states": {},
+      "expected_ability_seed": 1200.0,
+      "notes": "Cold-start fallback for node with no prerequisites is 1200."
+    }
+  ]
+}

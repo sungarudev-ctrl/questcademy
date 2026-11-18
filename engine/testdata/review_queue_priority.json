@@ -1,0 +1,86 @@
+{
+  "description": "Review queue priority ordering: relearning > overdue (largest first) > exam-critical > due today, asserted against reverse-order input.",
+  "spec_reference": "docs/04-learning-engine-spec.md §8.2, §12",
+  "learner_id": "learner-priority-01",
+  "now": "2026-06-20T08:00:00.000Z",
+  "exam_critical_nodes": ["NODE_C"],
+  "nodes_input_reverse_order": [
+    {
+      "node_id": "NODE_D",
+      "status": "needs_review",
+      "due_at": "2026-06-20T08:00:00.000Z",
+      "ability_elo": 1200,
+      "lapses": 0,
+      "stability": 3.0,
+      "difficulty_fsrs": 5.0,
+      "mastered_at": "2026-06-01T00:00:00.000Z",
+      "attempts_total": 5,
+      "recent_window": [],
+      "distinct_days": [],
+      "max_tier_correct": 3
+    },
+    {
+      "node_id": "NODE_C",
+      "status": "needs_review",
+      "due_at": "2026-06-20T04:00:00.000Z",
+      "ability_elo": 1200,
+      "lapses": 0,
+      "stability": 3.0,
+      "difficulty_fsrs": 5.0,
+      "mastered_at": "2026-06-01T00:00:00.000Z",
+      "attempts_total": 5,
+      "recent_window": [],
+      "distinct_days": [],
+      "max_tier_correct": 3
+    },
+    {
+      "node_id": "NODE_B1",
+      "status": "needs_review",
+      "due_at": "2026-06-15T08:00:00.000Z",
+      "ability_elo": 1200,
+      "lapses": 0,
+      "stability": 3.0,
+      "difficulty_fsrs": 5.0,
+      "mastered_at": "2026-06-01T00:00:00.000Z",
+      "attempts_total": 5,
+      "recent_window": [],
+      "distinct_days": [],
+      "max_tier_correct": 3
+    },
+    {
+      "node_id": "NODE_B2",
+      "status": "needs_review",
+      "due_at": "2026-06-05T08:00:00.000Z",
+      "ability_elo": 1200,
+      "lapses": 0,
+      "stability": 3.0,
+      "difficulty_fsrs": 5.0,
+      "mastered_at": "2026-06-01T00:00:00.000Z",
+      "attempts_total": 5,
+      "recent_window": [],
+      "distinct_days": [],
+      "max_tier_correct": 3
+    },
+    {
+      "node_id": "NODE_A",
+      "status": "relearning",
+      "due_at": "2026-06-20T00:00:00.000Z",
+      "ability_elo": 1200,
+      "lapses": 1,
+      "stability": 1.0,
+      "difficulty_fsrs": 5.6,
+      "mastered_at": "2026-06-01T00:00:00.000Z",
+      "attempts_total": 5,
+      "recent_window": [],
+      "distinct_days": [],
+      "max_tier_correct": 3
+    }
+  ],
+  "expected_queue_node_ids": [
+    "NODE_A",
+    "NODE_B2",
+    "NODE_B1",
+    "NODE_C",
+    "NODE_D"
+  ]
+}

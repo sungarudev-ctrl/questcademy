@@ -1,0 +1,40 @@
+{
+  "description": "Daily review queue hard cap (I-6): 20 due nodes produce exactly 8 queued items. Building the queue twice produces identical items and order (deterministic). Mid-day resume when 3 reviews are already completed respects remaining budget (5 items).",
+  "spec_reference": "docs/04-learning-engine-spec.md §8.2, §11 (I-6), §12",
+  "learner_id": "learner-cap-01",
+  "now": "2026-06-15T08:00:00.000Z",
+  "daily_cap": 8,
+  "nodes": [
+    { "node_id": "NODE_01", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_02", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_03", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_04", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_05", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_06", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_07", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_08", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_09", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_10", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_11", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_12", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_13", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_14", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_15", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_16", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_17", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_18", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_19", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 },
+    { "node_id": "NODE_20", "status": "needs_review", "due_at": "2026-06-15T00:00:00.000Z", "ability_elo": 1200, "lapses": 0, "stability": 3.0, "difficulty_fsrs": 5.0, "mastered_at": "2026-06-01T00:00:00.000Z", "attempts_total": 5, "recent_window": [], "distinct_days": [], "max_tier_correct": 3 }
+  ],
+  "expected_full_queue_count": 8,
+  "expected_first_8_node_ids": [
+    "NODE_01", "NODE_02", "NODE_03", "NODE_04", "NODE_05", "NODE_06", "NODE_07", "NODE_08"
+  ],
+  "midday_resume": {
+    "reviews_completed_today": 3,
+    "expected_remaining_queue_count": 5,
+    "expected_remaining_node_ids": [
+      "NODE_01", "NODE_02", "NODE_03", "NODE_04", "NODE_05"
+    ]
+  }
+}

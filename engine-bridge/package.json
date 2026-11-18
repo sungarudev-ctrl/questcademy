@@ -1,0 +1,10 @@
+{
+  "name": "@questcademy/engine-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Node sidecar that replays attempt logs through the real /engine build. The only way the Python backend runs engine logic (no second implementation).",
+  "scripts": {
+    "test": "node --test test/replay.test.mjs"
+  }
+}

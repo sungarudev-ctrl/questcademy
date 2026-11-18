@@ -1,0 +1,13 @@
+{
+  "fixture_id": "block_math_formula",
+  "kind": "block",
+  "blocks": [
+    {
+      "block_id": "b-m1",
+      "type": "math",
+      "payload": {
+        "latex": "ax + b = c \\implies x = \\frac{c - b}{a}"
+      }
+    }
+  ]
+}

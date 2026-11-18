@@ -1,0 +1,58 @@
+# Secrets and local configuration - never commit
+.env
+.env.*
+!.env.example
+docs/firebase-project/
+**/google-services.json
+**/GoogleService-Info.plist
+*adminsdk*.json
+*.pem
+*.p12
+*.jks
+*.keystore
+key.properties
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node
+node_modules/
+npm-debug.log*
+.pnpm-store/
+
+# Build outputs
+engine/dist/
+engine/coverage/
+simulation/dist/
+web/.next/
+web/out/
+web/tsconfig.tsbuildinfo
+*.tsbuildinfo
+coverage/
+
+# Flutter / mobile
+mobile/.dart_tool/
+mobile/build/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/.packages
+mobile/ios/Pods/
+mobile/android/.gradle/
+mobile/android/local.properties
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LocalizationRefreshResponse",
+  "type": "object",
+  "required": ["refreshed_override", "rationale"],
+  "properties": {
+    "refreshed_override": {
+      "type": ["object", "string", "null"],
+      "description": "The updated override object or string (e.g. section_overrides or stem/payload override)"
+    },
+    "rationale": { "type": "string" }
+  }
+}

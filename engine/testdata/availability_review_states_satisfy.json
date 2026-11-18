@@ -1,0 +1,48 @@
+{
+  "description": "Asserts that of all 6 node statuses, exactly the 3 SECURED_STATUSES (mastered, needs_review, relearning) satisfy a prerequisite under I-1, while the other 3 (locked, available, in_progress) gate availability.",
+  "spec_reference": "docs/04-learning-engine-spec.md §3, §11 (I-1), §12",
+  "graph": {
+    "PARENT_NODE": {
+      "node_id": "PARENT_NODE",
+      "prerequisites": []
+    },
+    "CHILD_NODE": {
+      "node_id": "CHILD_NODE",
+      "prerequisites": [
+        { "node_id": "PARENT_NODE", "type": "hard" }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "parent_status": "locked",
+      "expected_satisfies": false,
+      "expected_child_available": false
+    },
+    {
+      "parent_status": "available",
+      "expected_satisfies": false,
+      "expected_child_available": false
+    },
+    {
+      "parent_status": "in_progress",
+      "expected_satisfies": false,
+      "expected_child_available": false
+    },
+    {
+      "parent_status": "mastered",
+      "expected_satisfies": true,
+      "expected_child_available": true
+    },
+    {
+      "parent_status": "needs_review",
+      "expected_satisfies": true,
+      "expected_child_available": true
+    },
+    {
+      "parent_status": "relearning",
+      "expected_satisfies": true,
+      "expected_child_available": true
+    }
+  ]
+}

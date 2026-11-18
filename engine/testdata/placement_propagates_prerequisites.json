@@ -1,0 +1,12 @@
+{
+  "description": "Placement result propagates mastery down to prerequisite nodes. NOT IMPLEMENTED — pending DR-001.",
+  "spec_reference": "docs/04-learning-engine-spec.md §7.1, §12",
+  "skip": "pending DR-001 (prerequisite spine pilot content scope not defined)",
+  "frontier_nodes": [
+    "MATH.P3.FRAC_A"
+  ],
+  "expected_propagated": [
+    "MATH.P2.ADD",
+    "MATH.P1.COUNT"
+  ]
+}

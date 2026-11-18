@@ -1,0 +1,19 @@
+{
+  "fixture_id": "block_worked_example",
+  "kind": "block",
+  "blocks": [
+    {
+      "block_id": "b-we1",
+      "type": "worked_example",
+      "payload": {
+        "title": "Worked Example: Solving 2x + 6 = 14",
+        "steps": [
+          "Subtract 6 from both sides: 2x = 8",
+          "Divide both sides by 2: x = 4",
+          "Verify in original equation: 2(4) + 6 = 14 (true)"
+        ],
+        "final_answer": "x = 4"
+      }
+    }
+  ]
+}

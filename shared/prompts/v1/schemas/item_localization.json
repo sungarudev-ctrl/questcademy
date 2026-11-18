@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ItemLocalizationResponse",
+  "type": "object",
+  "required": ["stem_override", "payload_override", "solution_override", "rationale"],
+  "properties": {
+    "stem_override": { "type": ["string", "null"] },
+    "payload_override": { "type": ["object", "null"] },
+    "solution_override": { "type": ["string", "null"] },
+    "rationale": { "type": "string" }
+  }
+}

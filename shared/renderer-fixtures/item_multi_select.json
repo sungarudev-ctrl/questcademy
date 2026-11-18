@@ -1,0 +1,41 @@
+{
+  "fixture_id": "item_multi_select",
+  "kind": "item",
+  "item": {
+    "item_id": "ITEM-MS-01",
+    "node_id": "MATH.NUM.PRIMES",
+    "type": "multi_select",
+    "difficulty_tier": 2,
+    "difficulty_elo": 1180,
+    "stem": "Select all prime numbers from the list below.",
+    "payload": {
+      "options": [
+        {
+          "id": "A",
+          "content": "2",
+          "correct": true
+        },
+        {
+          "id": "B",
+          "content": "3",
+          "correct": true
+        },
+        {
+          "id": "C",
+          "content": "4",
+          "correct": false
+        },
+        {
+          "id": "D",
+          "content": "5",
+          "correct": true
+        },
+        {
+          "id": "E",
+          "content": "9",
+          "correct": false
+        }
+      ]
+    }
+  }
+}

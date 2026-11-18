@@ -1,0 +1,38 @@
+{
+  "name": "@questcademy/engine",
+  "version": "0.1.0",
+  "description": "Pure deterministic learning engine — no I/O, no clock, no network, no randomness except via injected PRNG.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
+    "simulation": "npm run build && npx tsc -p ../simulation/tsconfig.json && node ../simulation/harness.js",
+    "simulation:diff": "npm run build && npx tsc -p ../simulation/tsconfig.json && node ../simulation/assertions.js"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.5",
+    "typescript": "^5.4.5"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    },
+    "testMatch": ["<rootDir>/test/**/*.test.ts"],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  }
+}

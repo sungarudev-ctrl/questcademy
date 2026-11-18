@@ -1,0 +1,98 @@
+{
+  "description": "An unsecured hard prerequisite gates availability under I-1; in_progress and no-state-at-all both gate; the entry set (nodes with no hard prerequisites) is always available.",
+  "spec_reference": "docs/04-learning-engine-spec.md §3, §11 (I-1), §12",
+  "graph": {
+    "ROOT_ENTRY": {
+      "node_id": "ROOT_ENTRY",
+      "prerequisites": []
+    },
+    "DEPENDENT_NODE": {
+      "node_id": "DEPENDENT_NODE",
+      "prerequisites": [
+        { "node_id": "ROOT_ENTRY", "type": "hard" }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "name": "entry_set_no_prerequisites_always_available",
+      "node_id": "ROOT_ENTRY",
+      "prerequisite_states": {},
+      "expected_available": true,
+      "notes": "Nodes with zero hard prerequisites are immediately available."
+    },
+    {
+      "name": "prerequisite_missing_state_gates",
+      "node_id": "DEPENDENT_NODE",
+      "prerequisite_states": {},
+      "expected_available": false,
+      "notes": "No state at all for ROOT_ENTRY gates DEPENDENT_NODE."
+    },
+    {
+      "name": "prerequisite_in_progress_gates",
+      "node_id": "DEPENDENT_NODE",
+      "prerequisite_states": {
+        "ROOT_ENTRY": {
+          "node_id": "ROOT_ENTRY",
+          "status": "in_progress",
+          "ability_elo": 1200,
+          "attempts_total": 2,
+          "recent_window": [],
+          "distinct_days": [],
+          "max_tier_correct": 1,
+          "mastered_at": null,
+          "stability": 3.0,
+          "difficulty_fsrs": 5.0,
+          "due_at": null,
+          "lapses": 0
+        }
+      },
+      "expected_available": false,
+      "notes": "in_progress is not secured, so it gates DEPENDENT_NODE."
+    },
+    {
+      "name": "prerequisite_locked_gates",
+      "node_id": "DEPENDENT_NODE",
+      "prerequisite_states": {
+        "ROOT_ENTRY": {
+          "node_id": "ROOT_ENTRY",
+          "status": "locked",
+          "ability_elo": 1200,
+          "attempts_total": 0,
+          "recent_window": [],
+          "distinct_days": [],
+          "max_tier_correct": 0,
+          "mastered_at": null,
+          "stability": 3.0,
+          "difficulty_fsrs": 5.0,
+          "due_at": null,
+          "lapses": 0
+        }
+      },
+      "expected_available": false,
+      "notes": "locked gates DEPENDENT_NODE."
+    },
+    {
+      "name": "prerequisite_mastered_satisfies",
+      "node_id": "DEPENDENT_NODE",
+      "prerequisite_states": {
+        "ROOT_ENTRY": {
+          "node_id": "ROOT_ENTRY",
+          "status": "mastered",
+          "ability_elo": 1250,
+          "attempts_total": 5,
+          "recent_window": [],
+          "distinct_days": ["2026-09-10", "2026-09-12"],
+          "max_tier_correct": 3,
+          "mastered_at": "2026-09-12T10:00:00Z",
+          "stability": 3.0,
+          "difficulty_fsrs": 4.8,
+          "due_at": "2026-09-15T10:00:00Z",
+          "lapses": 0
+        }
+      },
+      "expected_available": true,
+      "notes": "mastered is secured, so DEPENDENT_NODE becomes available."
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "description": "A soft prerequisite never gates availability under I-1 and doc 02 §2.2.",
+  "spec_reference": "docs/04-learning-engine-spec.md §3, §11 (I-1), §12; docs/02-skill-graph-spec.md §2.2",
+  "graph": {
+    "NODE_SOFT_PREREQ": {
+      "node_id": "NODE_SOFT_PREREQ",
+      "prerequisites": []
+    },
+    "NODE_HARD_PREREQ": {
+      "node_id": "NODE_HARD_PREREQ",
+      "prerequisites": []
+    },
+    "NODE_TARGET_SOFT_ONLY": {
+      "node_id": "NODE_TARGET_SOFT_ONLY",
+      "prerequisites": [
+        { "node_id": "NODE_SOFT_PREREQ", "type": "soft" }
+      ]
+    },
+    "NODE_TARGET_MIXED": {
+      "node_id": "NODE_TARGET_MIXED",
+      "prerequisites": [
+        { "node_id": "NODE_HARD_PREREQ", "type": "hard" },
+        { "node_id": "NODE_SOFT_PREREQ", "type": "soft" }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "name": "soft_prerequisite_locked_target_available",
+      "target_node_id": "NODE_TARGET_SOFT_ONLY",
+      "prerequisite_states": {
+        "NODE_SOFT_PREREQ": {
+          "node_id": "NODE_SOFT_PREREQ",
+          "status": "locked",
+          "ability_elo": 1200,
+          "attempts_total": 0,
+          "recent_window": [],
+          "distinct_days": [],
+          "max_tier_correct": 0,
+          "mastered_at": null,
+          "stability": 3.0,
+          "difficulty_fsrs": 5.0,
+          "due_at": null,
+          "lapses": 0
+        }
+      },
+      "expected_available": true,
+      "notes": "Soft prerequisite is locked, but since it is soft, it never gates availability."
+    },
+    {
+      "name": "soft_prerequisite_missing_target_available",
+      "target_node_id": "NODE_TARGET_SOFT_ONLY",
+      "prerequisite_states": {},
+      "expected_available": true,
+      "notes": "Soft prerequisite has no state at all, but never gates availability."
+    },
+    {
+      "name": "mixed_hard_locked_soft_mastered_target_gated",
+      "target_node_id": "NODE_TARGET_MIXED",
+      "prerequisite_states": {
+        "NODE_HARD_PREREQ": {
+          "node_id": "NODE_HARD_PREREQ",
+          "status": "locked",
+          "ability_elo": 1200,
+          "attempts_total": 0,
+          "recent_window": [],
+          "distinct_days": [],
+          "max_tier_correct": 0,
+          "mastered_at": null,
+          "stability": 3.0,
+          "difficulty_fsrs": 5.0,
+          "due_at": null,
+          "lapses": 0
+        },
+        "NODE_SOFT_PREREQ": {
+          "node_id": "NODE_SOFT_PREREQ",
+          "status": "mastered",
+          "ability_elo": 1250,
+          "attempts_total": 5,
+          "recent_window": [],
+          "distinct_days": ["2026-09-01", "2026-09-03"],
+          "max_tier_correct": 3,
+          "mastered_at": "2026-09-03T10:00:00Z",
+          "stability": 3.0,
+          "difficulty_fsrs": 4.8,
+          "due_at": "2026-09-06T10:00:00Z",
+          "lapses": 0
+        }
+      },
+      "expected_available": false,
+      "notes": "Hard prerequisite is locked, so it gates, regardless of soft prerequisite being mastered."
+    },
+    {
+      "name": "mixed_hard_mastered_soft_locked_target_available",
+      "target_node_id": "NODE_TARGET_MIXED",
+      "prerequisite_states": {
+        "NODE_HARD_PREREQ": {
+          "node_id": "NODE_HARD_PREREQ",
+          "status": "mastered",
+          "ability_elo": 1250,
+          "attempts_total": 5,
+          "recent_window": [],
+          "distinct_days": ["2026-09-01", "2026-09-03"],
+          "max_tier_correct": 3,
+          "mastered_at": "2026-09-03T10:00:00Z",
+          "stability": 3.0,
+          "difficulty_fsrs": 4.8,
+          "due_at": "2026-09-06T10:00:00Z",
+          "lapses": 0
+        },
+        "NODE_SOFT_PREREQ": {
+          "node_id": "NODE_SOFT_PREREQ",
+          "status": "locked",
+          "ability_elo": 1200,
+          "attempts_total": 0,
+          "recent_window": [],
+          "distinct_days": [],
+          "max_tier_correct": 0,
+          "mastered_at": null,
+          "stability": 3.0,
+          "difficulty_fsrs": 5.0,
+          "due_at": null,
+          "lapses": 0
+        }
+      },
+      "expected_available": true,
+      "notes": "Hard prerequisite is mastered (secured), and soft prerequisite locked does NOT gate."
+    }
+  ]
+}

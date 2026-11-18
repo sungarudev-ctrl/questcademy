@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ContentCanonicalResponse",
+  "type": "object",
+  "required": [
+    "summary",
+    "learning_objectives",
+    "sections",
+    "worked_examples",
+    "key_formulas",
+    "analogies",
+    "common_mistakes",
+    "estimated_minutes"
+  ],
+  "properties": {
+    "summary": { "type": "string" },
+    "learning_objectives": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["section_index", "title", "blocks"],
+        "properties": {
+          "section_index": { "type": "integer" },
+          "title": { "type": "string" },
+          "blocks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["type"],
+              "properties": {
+                "type": { "type": "string" },
+                "text": { "type": "string" },
+                "latex": { "type": "string" },
+                "kind": { "type": "string" },
+                "items": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          }
+        }
+      }
+    },
+    "worked_examples": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["title", "problem", "steps", "solution"],
+        "properties": {
+          "title": { "type": "string" },
+          "problem": { "type": "string" },
+          "steps": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "solution": { "type": "string" }
+        }
+      }
+    },
+    "key_formulas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "latex", "explanation"],
+        "properties": {
+          "name": { "type": "string" },
+          "latex": { "type": "string" },
+          "explanation": { "type": "string" }
+        }
+      }
+    },
+    "analogies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["concept", "analogy"],
+        "properties": {
+          "concept": { "type": "string" },
+          "analogy": { "type": "string" }
+        }
+      }
+    },
+    "common_mistakes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["misconception_id", "mistake", "correction"],
+        "properties": {
+          "misconception_id": { "type": "string" },
+          "mistake": { "type": "string" },
+          "correction": { "type": "string" }
+        }
+      }
+    },
+    "estimated_minutes": { "type": "integer" }
+  }
+}

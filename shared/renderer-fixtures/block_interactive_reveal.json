@@ -1,0 +1,14 @@
+{
+  "fixture_id": "block_interactive_reveal",
+  "kind": "block",
+  "blocks": [
+    {
+      "block_id": "b-ir1",
+      "type": "interactive",
+      "payload": {
+        "prompt": "Tap to reveal the derivation of the quadratic formula.",
+        "revealed_text": "Completed square form yields x = (-b +- sqrt(b^2 - 4ac)) / (2a)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "fixture_id": "block_callout_note",
+  "kind": "block",
+  "blocks": [
+    {
+      "block_id": "b-c1",
+      "type": "callout",
+      "payload": {
+        "title": "Key Rule",
+        "text": "Whatever operation is performed on one side of the equation must be performed on the other."
+      }
+    }
+  ]
+}
